@@ -10,8 +10,11 @@ Able to make tables, get information, and insert information
 Able to create a dictionary of all the tags within the VIDEOS table and have those tags via loop to have their own table. 
 Those tables created now have the title and url of the video inserted. 
 
+(2/25/18) 
+Classes of Playlist and Entry created in Search.py. 
+Implemented the opening of URLs in webbrowser via webbrowser library 
+Started code to iterate through database but not completed yet. 
+
 What to do next...
-For effieicny, make sure that when table() is being run that duplicate information isn't being enetered, 
 Implement search function so if the user types a word or phrase or a video he/she wants then the program should search through the entire database through title, and tags and then list out all the videos that are within that category. 
-Finally, implement a urllibparser that is able to open urls once the user decides to watch a certain video... 
 
