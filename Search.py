@@ -7,6 +7,7 @@
 #But this file, will only cover all functions and classes associated with
 #searching.
 #######################################################################
+import sqlite3
 def search(userInput):
     #iterate through database and see what matches teh user input
     pass;
