@@ -13,8 +13,10 @@ Those tables created now have the title and url of the video inserted.
 (2/25/18) 
 Classes of Playlist and Entry created in Search.py. 
 Implemented the opening of URLs in webbrowser via webbrowser library 
-Started code to iterate through database but not completed yet. 
+Search.py has been finished and tested. 
+Project mostly done. 
+
 
 What to do next...
-Implement search function so if the user types a word or phrase or a video he/she wants then the program should search through the entire database through title, and tags and then list out all the videos that are within that category. 
+Change webbrowser() function just a bit so that it opens up in chrome and hopefully opens up the url right into youtube instead of just searching it first. 
 
