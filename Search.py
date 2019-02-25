@@ -7,10 +7,15 @@
 #But this file, will only cover all functions and classes associated with
 #searching.
 #######################################################################
+from Table import *
 import sqlite3
+from db_utils import db_connect
 def search(userInput):
-    #iterate through database and see what matches teh user input
-    pass;
+    conn=sqlite3.connect("VideoDatabase.db")
+    cur=conn.cursor()
+    #iterate through database and create the objects first.
+    d=getTags()
+    cur.execute('SELECT TITLE,URL,TAGS FROM VIDEOS')
 
 #in order to carry out the search() more efficiently a playlist object will
 #be made.
