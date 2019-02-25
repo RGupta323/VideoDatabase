@@ -29,10 +29,20 @@ def search(userInput):
         e=Entry(d[table][0],d[table][1],"")
         p.add(e)
     #now search through Playlist and all the entry objects.
+    final = Playlist()
     for n in range(p.length()):
         #now begin searching.
-        pass
-    
+        if(p.get(n).getTitle()==userInput or p.get(n).getUrl()==userInput
+           or p.get(n).getTags()==userInput):
+            print(n+" "+p.get(n))
+            final.add(p.get(n))
+    #now that final has been built which is a playlist object of all things
+    #that match the user input.
+
+    index=input("""Please select an option, by the number which the video appear
+        next to: """)
+    index=int(index)
+    return final.select(index)
 #in order to carry out the search() more efficiently a playlist object will
 #be made.
 #This will have the ability to select an option for videos,
@@ -48,10 +58,12 @@ class Playlist:
         self.d.append(a)
     def remove(self,a):
         self.d.remove(a)
-    def get(i):
+    def get(self,i):
         return self.d[i];
-    def length():
+    def length(self):
         return len(self.d)
+    def select(self,i):
+        return self.d[i].openURL()
     def __repr__(self):
         return [element.repr() for element in self.d]
 
@@ -68,7 +80,7 @@ class Entry:
     def getUrl(self):
         return self.url;
     def getTags(self):
-        return tags;
+        return self.tags;
     #function to open the url
     def openURL(self):
         return webbrowser.open(self.url)
