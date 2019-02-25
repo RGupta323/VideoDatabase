@@ -28,8 +28,11 @@ def search(userInput):
     for table in d:
         e=Entry(d[table][0],d[table][1],"")
         p.add(e)
-    #now search through Playlist and all the entry objects. 
-
+    #now search through Playlist and all the entry objects.
+    for n in range(p.length()):
+        #now begin searching.
+        pass
+    
 #in order to carry out the search() more efficiently a playlist object will
 #be made.
 #This will have the ability to select an option for videos,
@@ -46,7 +49,9 @@ class Playlist:
     def remove(self,a):
         self.d.remove(a)
     def get(i):
-        return self.d[i]; 
+        return self.d[i];
+    def length():
+        return len(self.d)
     def __repr__(self):
         return [element.repr() for element in self.d]
 
