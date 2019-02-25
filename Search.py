@@ -7,9 +7,12 @@
 #But this file, will only cover all functions and classes associated with
 #searching.
 #######################################################################
-from Table import *
+from Table import * #importing all functions from Table.py
 import sqlite3
 from db_utils import db_connect
+import webbrowser
+#Searches through all the function to see if any match the userInput
+#Then prints out the url. 
 def search(userInput):
     conn=sqlite3.connect("VideoDatabase.db")
     cur=conn.cursor()
@@ -51,6 +54,9 @@ class Entry:
         return self.url;
     def getTags(self):
         return tags;
+    #function to open the url
+    def openURL(self):
+        return webbrowser.open(self.url)
     def __repr__():
         return "Title: {}, URL: {}, Tags: {}".format(
             self.title,self.url,self.tags)
