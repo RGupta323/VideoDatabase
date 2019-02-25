@@ -25,7 +25,10 @@ def search(userInput):
         e=Entry(row[0],row[1],row[2])
         p.add(e)
     #from here need to iterate through all the tables within the VideoDatabase
-       
+    for table in d:
+        e=Entry(d[table][0],d[table][1],"")
+        p.add(e)
+    #now search through Playlist and all the entry objects. 
 
 #in order to carry out the search() more efficiently a playlist object will
 #be made.
