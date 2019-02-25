@@ -18,14 +18,18 @@ def search(userInput):
 class Playlist:
     d=[]
     def __init__(self):
-        self.d=d
+        self.d=[]
     #methods: add(), repr(),
 
     #the argument in add() is going to be an entry object 
-    def add(a):
-        pass
-    def __repr__():
-        pass
+    def add(self,a):
+        self.d.append(a)
+    def remove(self,a):
+        self.d.remove(a)
+    def get(i):
+        return self.d[i]; 
+    def __repr__(self):
+        return [element.repr() for element in self.d]
 
 #Playlist is going to be a collection of theese entry objects
 #which are gonna contain title, url, and tags for each video per say
@@ -35,9 +39,12 @@ class Entry:
         self.url=url
         self.tags=tags
     #get methods
-    def getTitle():
+    def getTitle(self):
         return self.title
-    def getUrl():
+    def getUrl(self):
         return self.url;
-    def getTags():
-        return tags; 
+    def getTags(self):
+        return tags;
+    def __repr__():
+        return "Title: {}, URL: {}, Tags: {}".format(
+            self.title,self.url,self.tags)
