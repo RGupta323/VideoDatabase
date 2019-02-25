@@ -23,25 +23,32 @@ def search(userInput):
     p=Playlist()
     for row in results:
         e=Entry(row[0],row[1],row[2])
+        #print(e)
         p.add(e)
+    #print(p.length())
     #from here need to iterate through all the tables within the VideoDatabase
     for table in d:
         e=Entry(d[table][0],d[table][1],"")
         p.add(e)
     #now search through Playlist and all the entry objects.
+    #print(p.getTags()); 
     final = Playlist()
+    #print(p)
     for n in range(p.length()):
         #now begin searching.
         if(p.get(n).getTitle()==userInput or p.get(n).getUrl()==userInput
-           or p.get(n).getTags()==userInput):
-            print(n+" "+p.get(n))
+           or p.get(n).getTags()==userInput or userInput in p.get(n).getTags()):
+            print(str(n)+".) "+p.toString(n))
             final.add(p.get(n))
+        
     #now that final has been built which is a playlist object of all things
     #that match the user input.
 
     index=input("""Please select an option, by the number which the video appear
         next to: """)
     index=int(index)
+    #print(index)
+    #print(final.length())
     return final.select(index)
 #in order to carry out the search() more efficiently a playlist object will
 #be made.
@@ -65,7 +72,12 @@ class Playlist:
     def select(self,i):
         return self.d[i].openURL()
     def __repr__(self):
-        return [element.repr() for element in self.d]
+        for element in self.d:
+            print(element)
+    def toString(self,i):
+        return "{}, {}, {}".format(self.d[i].getTitle(),
+                                   self.d[i].getUrl(),
+                                   self.d[i].getTags())
 
 #Playlist is going to be a collection of theese entry objects
 #which are gonna contain title, url, and tags for each video per say
@@ -84,6 +96,6 @@ class Entry:
     #function to open the url
     def openURL(self):
         return webbrowser.open(self.url)
-    def __repr__():
+    def __repr__(self):
         return "Title: {}, URL: {}, Tags: {}".format(
             self.title,self.url,self.tags)
