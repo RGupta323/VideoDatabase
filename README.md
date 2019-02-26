@@ -1,5 +1,5 @@
 # VideoDatabase
-Creates a database using python and mysql that just has a bunch of video links which can be played through the same program. 
+Creates a database using python and sqlite3 that just has a bunch of video links which can be played through the same program. 
 
 This is not finished! 
 
@@ -16,8 +16,12 @@ Implemented the opening of URLs in webbrowser via webbrowser library
 Search.py has been finished and tested. 
 Project mostly done, just need to implement user interface. 
 
+(2/26/18)
+Worked on main.py
+Edited user interface and successfully works! 
+User able to enter data manually and is able to successfully be added to the database. 
+Search() function also works from main.py, user is able to search for a video, successfully. 
+
 
 What to do next...
-Work on main.py so that the actual user interface works. 
-check on any other functions whose status is untested. 
-
+Need to work on readFiles() function. This is where a user can create a .txt file or .csv file, and all the data from there will be added to the database. 
