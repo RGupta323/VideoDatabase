@@ -95,7 +95,9 @@ class Entry:
         return self.tags;
     #function to open the url
     def openURL(self):
-        return webbrowser.open(self.url)
+        path="C:/Program Files (x86)/Google/Chrome/Application.chrome.exe"
+        #return webbrowser.open(self.url)
+        return webbrowser.get(path).open(self.url)
     def __repr__(self):
         return "Title: {}, URL: {}, Tags: {}".format(
             self.title,self.url,self.tags)
