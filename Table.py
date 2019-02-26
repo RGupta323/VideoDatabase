@@ -16,7 +16,7 @@ from db_utils import db_connect
 #main funciton table(), creates teh tables and fill in the tables
 def table():
     #connecting to database
-    conn=sqlite3.connect("VideoDatabase.db")
+    conn=sqlite3.connect("VideoDatabase2.db")
     cur=conn.cursor()
     #iterate through all the tags and create a table based on each unique tag.
     #keep in mind that there can be no repeating table with a different tag 
@@ -52,23 +52,33 @@ URL TEXT NOT NULL);'''.format(tags,))
 
 
 #user input
-#Status: UNTESTED 
+#Status: TESTED! Works! 
+#SUCCESS
 def userInput():
-    print("""Hello! This porgram will automatically fill in the table based
+    print("""Hello! This program will automatically fill in the table based
 on your responses. You will enter a title (name of the video), a url, and tags
 (these will be things that can help us search for your video when you which
 to watch it. Please enter done when you wish to be finished""")
     index=0;
     d=dict()
+    conn=sqlite3.connect("VideoDatabase2.db")
+    cur=conn.cursor()
     while(True):
         title=input("Please enter title: ")
+        if(title=='done'):
+            break
         url = input("Please enter url: ")
+        if(url=='done'):
+            break
         tags=input("Please enter all tags that you can think of separated by commas: ")
         if(title=='done' or url=='done' or tags=='done'):
             break;
-        d[index]={'title': title, 'url: ': url, 'tags': tags}
-        index+=1
-    return d;
+        conn.execute("""INSERT INTO VIDEOS (TITLE,URL,TAGS) \
+VALUES(?,?,?)""",(title, url, tags,))
+        conn.commit()
+    conn.close()
+    
+       
 
 #reading from a .txt file
 #Status: UNTESTED 
@@ -97,7 +107,7 @@ def readFiles():
 def getTags():
     d=list()
     di=dict(); 
-    con=sqlite3.connect("VideoDatabase.db")
+    con=sqlite3.connect("VideoDatabase2.db")
     cur=con.cursor()
     cur.execute('SELECT TITLE,URL,TAGS FROM VIDEOS')
     results = cur.fetchall()
@@ -126,12 +136,13 @@ def getTagsDict(d):
 #Just getting the tags, as a string
 def justTags():
     d=list()
-    con=sqlite3.connect("VideoDatabase.db")
+    con=sqlite3.connect("VideoDatabase2.db")
     cur=con.cursor()
     cur.execute('SELECT TAGS FROM VIDEOS')
     results=cur.fetchall()
     for row in results:
         d.append(row)
+    con.close()
     return d
         
     

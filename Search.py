@@ -14,7 +14,7 @@ import webbrowser
 #Searches through all the function to see if any match the userInput
 #Then prints out the url. 
 def search(userInput):
-    conn=sqlite3.connect("VideoDatabase.db")
+    conn=sqlite3.connect("VideoDatabase2.db")
     cur=conn.cursor()
     #iterate through database and create the objects first.
     d=getTags()

@@ -15,8 +15,10 @@
 
 ###########################################################################
 import sqlite3
+from Search import *
+from Table import * 
 #connecting to database
-conn = sqlite3.connect("VideoDatabase.db")
+conn = sqlite3.connect("VideoDatabase2.db")
 #print("Connected to database successfully!") #connected successfully
 
 #creating table inside database
@@ -28,21 +30,42 @@ TAGS TEXT NOT NULL);''')
 except:
     print("Table already created")
 #print("Table created successfully") #table created successfully
-
+conn.commit()
+conn.close()
 #Okay so from here we can fill the table
 #This can be done via file, user input, but for now I'm just going to manaully
 #enter them in.
+option=input("""Welcome! If you would like to search, enter 0, if you would
+like to enter data into a database enter 1.
+input: """)
+#for searching
+if(int(option)==0):
+    userInput=input("Please enter what you would like to search: ")
+    search(userInput)
+#entering stuff into a database
+else:
+    option=input("""Please enter 0 if you would like to manually
+input the title, url and tags of the video or enter 1 if you have a text file
+that already has those things.
+input: """)
+    #entering manually
+    if(int(option)==0):
+        userInput()
+    #entering via text file
+    if(int(option)==1):
+        readFiles()
+            
 
-conn.execute("""INSERT INTO VIDEOS (TITLE,URL,TAGS) \
-VALUES('Sith Inquisitor Ending - Full Darth Revan Set',
-             "https://www.youtube.com/watch?v=-Jr_uKfbsWA%t=124",
-             "Star Wars, SWTOR, Sith Inquisitor, Sith Inquistor Story Ending, Full Darth Revan Set, MMO,Game")""")
+#conn.execute("""INSERT INTO VIDEOS (TITLE,URL,TAGS) \
+#VALUES('Sith Inquisitor Ending - Full Darth Revan Set',
+#             "https://www.youtube.com/watch?v=-Jr_uKfbsWA%t=124",
+#             "Star Wars, SWTOR, Sith Inquisitor, Sith Inquistor Story Ending, Full Darth Revan Set, MMO,Game")""")
 #would get user input or read from a text file from here...
 
-conn.commit()
+
 print("Records created successfully!") #records created successfully
 
 #from here we can access the data in the table, which will be the implementation of the search function
 
 
-conn.close()
+
