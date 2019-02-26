@@ -81,10 +81,13 @@ VALUES(?,?,?)""",(title, url, tags,))
        
 
 #reading from a .txt file
-#Status: UNTESTED 
+#Status: UNTESTED
+#Needs some work.... 
 def readFiles():
     fileName=input("Please enter file name: ")
-    fileName=fileName+".txt"
+    if(".txt" not in fileName and ".csv" not in fileName): 
+        fileName=fileName+".txt"
+    conn=sqlite3.connect("VideoDatabase2.db")
     file=open(fileName,'r');
     #from here remove the /n new line when using file.readLines() and in addition create a dictionary
     d=dict()
@@ -96,9 +99,7 @@ def readFiles():
         tags=input("Please enter all tags that you can think of seaprated by commas or enter done ")
         if(title=='done' or url=='done' or tags=='done'):
             break;
-        d[index]={'title': title, 'url': url, 'tags':tags}
-        index+=1
-    return d;
+    conn.close()
 
 #main functions to get all teh tags and return a list of all teh tags;
 #should have no duplicates
