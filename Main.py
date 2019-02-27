@@ -51,11 +51,11 @@ input: """)
     #entering manually
     if(int(option)==0):
         userInput() #this function works!!!
-        #table()
+        table()
     #entering via text file
     if(int(option)==1):
         readFiles()
-        #table()
+        table()
             
 
 
