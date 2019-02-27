@@ -12,11 +12,11 @@ import csv
 #a dictionary with title, url, and tags being keys.
 #so it should return something like this: [{title:"a",url:"b",tags:"cd"},{..}]
 #only works for .txt files
-#Status: UNTESTED 
+#Status: WORKS!!! SUCCESS!!!
 def parseTxtFile(fileName):
     alist=list()
     f=open(fileName,"r")
-    file=f.readLines()
+    file=f.readlines()
     firstRow=True
     for line in file:
         if(firstRow):
