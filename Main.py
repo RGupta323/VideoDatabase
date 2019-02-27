@@ -50,17 +50,14 @@ that already has those things.
 input: """)
     #entering manually
     if(int(option)==0):
-        userInput()
+        userInput() #this function works!!!
+        #table()
     #entering via text file
     if(int(option)==1):
         readFiles()
+        #table()
             
 
-#conn.execute("""INSERT INTO VIDEOS (TITLE,URL,TAGS) \
-#VALUES('Sith Inquisitor Ending - Full Darth Revan Set',
-#             "https://www.youtube.com/watch?v=-Jr_uKfbsWA%t=124",
-#             "Star Wars, SWTOR, Sith Inquisitor, Sith Inquistor Story Ending, Full Darth Revan Set, MMO,Game")""")
-#would get user input or read from a text file from here...
 
 
 print("Records created successfully!") #records created successfully
