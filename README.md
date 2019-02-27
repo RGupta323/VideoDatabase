@@ -22,6 +22,10 @@ Edited user interface and successfully works!
 User able to enter data manually and is able to successfully be added to the database. 
 Search() function also works from main.py, user is able to search for a video, successfully. 
 
+(2/27/18)
+Created Test1_TEXT.txt file, filled it with 5 video entries. Then worked on readFiles() function. 
+Created FileParser.py that has functions to effectively parse through a .txt or .csv file and return a list of dictionaries from that file. 
+Finished FileParser.py, tested readFile() works successfully! 
 
 What to do next...
-Need to work on readFiles() function. This is where a user can create a .txt file or .csv file, and all the data from there will be added to the database. 
+Work on the .csv portion of readFiles() and the parseFile() functions. 
