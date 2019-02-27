@@ -11,7 +11,8 @@ import csv
 #iterate through the file, get rid of the new line characters and return
 #a dictionary with title, url, and tags being keys.
 #so it should return something like this: [{title:"a",url:"b",tags:"cd"},{..}]
-#only works for .txt files 
+#only works for .txt files
+#Status: UNTESTED 
 def parseTxtFile(fileName):
     alist=list()
     f=open(fileName,"r")
@@ -21,13 +22,23 @@ def parseTxtFile(fileName):
         line=getRidOfNewLines(line)
         d={'title':line[0],'url':line[1],'tags':line[2:]}
         alist.append(d)
+    f.close()
     return alist
 
 #Helper function that takes in a list and takes out the "\n" character
+#Status: TESTED; WORKS!!! SUCCESS!
 def getRidOfNewLines(a):
     for n in range(len(a)):
         a[n]=a[n].replace("\n","")
     return a
-            
+
+#Now iterate through the file, get rid of the new line characters and return
+#a dictionary with title, url and tags being the keys
+#returns basically the same thing as parseTxtFile()
+#Now this works for csv files!!!
+#Status: UNTESTED
+def parseCsvFile(fileName):
+    alist=list()
+    #to be continued.... 
             
         
