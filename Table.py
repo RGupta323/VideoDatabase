@@ -10,6 +10,7 @@
 ##############################################################
 import sqlite3
 from db_utils import db_connect
+from FileParser import *
 
 
 #functions to fill in the table
@@ -85,21 +86,14 @@ VALUES(?,?,?)""",(title, url, tags,))
 #Needs some work.... 
 def readFiles():
     fileName=input("Please enter file name: ")
-    if(".txt" not in fileName and ".csv" not in fileName): 
-        fileName=fileName+".txt"
     conn=sqlite3.connect("VideoDatabase2.db")
-    file=open(fileName,'r');
-    #from here remove the /n new line when using file.readLines() and in addition create a dictionary
-    d=dict()
-    f=file.readLines()
-    index=0
+    f=parseTxtFile(fileName)
     for element in f:
-        title=input("Please enter title or enter done if you wish to be done: ")
-        url = input("Please enter url or enter done if you wish to be done: ")
-        tags=input("Please enter all tags that you can think of seaprated by commas or enter done ")
-        if(title=='done' or url=='done' or tags=='done'):
-            break;
+        conn.execute("""INSERT INTO VIDEOS (TITLE,URL,TAGS) \
+VALUES(?,?,?)""",(element['title'],element['url'],element['tags'],))
+        conn.commit()
     conn.close()
+    print("File Read!")
 
 #main functions to get all teh tags and return a list of all teh tags;
 #should have no duplicates

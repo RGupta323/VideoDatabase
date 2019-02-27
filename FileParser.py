@@ -24,7 +24,7 @@ def parseTxtFile(fileName):
         else: 
             line=line.split(",")
             line=getRidOfNewLines(line)
-            d={'title':line[0],'url':line[1],'tags':line[2:]}
+            d={'title':line[0],'url':line[1],'tags':listToString(line[2:])}
             alist.append(d)
     f.close()
     return alist
@@ -57,6 +57,10 @@ def parseCsvFile(fileName):
             alist.append(d)
     f.close()
     return alist
+
+#Helper function, to convert a list of strings into a simple string
+def listToString(a):
+    return ','.join([element for element in a])
 
             
         
