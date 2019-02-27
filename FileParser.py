@@ -17,11 +17,15 @@ def parseTxtFile(fileName):
     alist=list()
     f=open(fileName,"r")
     file=f.readLines()
+    firstRow=True
     for line in file:
-        line=line.split(",")
-        line=getRidOfNewLines(line)
-        d={'title':line[0],'url':line[1],'tags':line[2:]}
-        alist.append(d)
+        if(firstRow):
+            firstRow=False
+        else: 
+            line=line.split(",")
+            line=getRidOfNewLines(line)
+            d={'title':line[0],'url':line[1],'tags':line[2:]}
+            alist.append(d)
     f.close()
     return alist
 
@@ -39,6 +43,20 @@ def getRidOfNewLines(a):
 #Status: UNTESTED
 def parseCsvFile(fileName):
     alist=list()
-    #to be continued.... 
+    if(".csv" not in fileName):
+        fileName=fileName+".csv"
+    f=open(fileName)
+    firstRow=True; 
+    reader=csv.reader(f)
+    for line in reader:
+        if(firstRow):
+            firstRow=False
+        else:
+            line=getRidOfNewLines(line)
+            d={'title':line[0],'url':line[1],'tags':line[2:]}
+            alist.append(d)
+    f.close()
+    return alist
+
             
         
