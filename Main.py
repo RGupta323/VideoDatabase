@@ -45,8 +45,8 @@ if(int(option)==0):
 #entering stuff into a database
 else:
     option=input("""Please enter 0 if you would like to manually
-input the title, url and tags of the video or enter 1 if you have a text file
-that already has those things.
+input the title, url and tags of the video or enter 1 if you have a text
+or csv file that already has those things.
 input: """)
     #entering manually
     if(int(option)==0):
@@ -54,7 +54,7 @@ input: """)
         table()
     #entering via text file
     if(int(option)==1):
-        readFiles()
+        readFiles() #this function works for txt files!!!
         table()
             
 

@@ -81,18 +81,27 @@ VALUES(?,?,?)""",(title, url, tags,))
     
        
 
-#reading from a .txt file
+#reading from a .txt or .csv file
+#fileName is going to require a .txt or .csv being putted into the name
 #Status: UNTESTED
-#Needs some work.... 
 def readFiles():
     fileName=input("Please enter file name: ")
     conn=sqlite3.connect("VideoDatabase2.db")
-    f=parseTxtFile(fileName)
-    for element in f:
-        conn.execute("""INSERT INTO VIDEOS (TITLE,URL,TAGS) \
-VALUES(?,?,?)""",(element['title'],element['url'],element['tags'],))
-        conn.commit()
-    conn.close()
+    if(".txt" in fileName):
+        f=parseTxtFile(fileName)
+        for element in f:
+            conn.execute("""INSERT INTO VIDEOS (TITLE,URL,TAGS) \
+    VALUES(?,?,?)""",(element['title'],element['url'],element['tags'],))
+            conn.commit()
+        conn.close()
+    if(".csv" in fileName):
+        f=parseCsvFile(fileName)
+        for element in f:
+            conn.execute("""INSERT INTO VIDEOS (TITLE,URL,TAGS) \
+    VALUES(?,?,?)""",(element['title'],element['url'],element['tags'],))
+            conn.commit()
+        conn.close()
+        
     print("File Read!")
 
 #main functions to get all teh tags and return a list of all teh tags;

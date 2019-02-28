@@ -40,7 +40,7 @@ def getRidOfNewLines(a):
 #a dictionary with title, url and tags being the keys
 #returns basically the same thing as parseTxtFile()
 #Now this works for csv files!!!
-#Status: UNTESTED
+#Status: TESTED! WORKS!!!!
 def parseCsvFile(fileName):
     alist=list()
     if(".csv" not in fileName):
@@ -53,7 +53,7 @@ def parseCsvFile(fileName):
             firstRow=False
         else:
             line=getRidOfNewLines(line)
-            d={'title':line[0],'url':line[1],'tags':line[2:]}
+            d={'title':line[0],'url':line[1],'tags':listToString(line[2:])}
             alist.append(d)
     f.close()
     return alist

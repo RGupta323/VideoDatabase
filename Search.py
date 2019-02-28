@@ -95,7 +95,7 @@ class Entry:
         return self.tags;
     #function to open the url
     def openURL(self):
-        return webbrowser.open(self.url)
+        return webbrowser.open_new_tab(self.url)
     def __repr__(self):
         return "Title: {}, URL: {}, Tags: {}".format(
             self.title,self.url,self.tags)
