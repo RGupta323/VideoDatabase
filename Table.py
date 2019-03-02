@@ -83,7 +83,7 @@ VALUES(?,?,?)""",(title, url, tags,))
 
 #reading from a .txt or .csv file
 #fileName is going to require a .txt or .csv being putted into the name
-#Status: UNTESTED
+#Status: TESTED!
 def readFiles():
     fileName=input("Please enter file name: ")
     conn=sqlite3.connect("VideoDatabase2.db")
