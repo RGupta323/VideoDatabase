@@ -12,3 +12,26 @@
 #Programming wise it would use search() from googles interface, and essentially
 #look for a title and the url, because that's all I would need.
 #############################################################################
+from googlesearch import search
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+def webscraper(phrase, n=10):
+    phrase.lower()
+    title=list()
+    if("youtube" not in phrase):
+        phrase+=" youtube"
+    j=search(phrase,tld='com',num=n, stop=1,pause=2)
+    a=[element for element in j]
+    #now for each url in a, find the title
+    driver=webdriver.Chrome()
+    for url in a:
+        driver.get(url)
+        wait=WebDriverWait(driver,10)
+        element=wait.until(EC.presence_of_element_located((By.CSS_SELECTOR,
+                                    "h1.title yt-formatted-string"))).text
+        title.append(element)
+    driver.quit()
+    return title
+    
