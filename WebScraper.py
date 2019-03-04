@@ -35,5 +35,8 @@ def webscraper(phrase, n=10):
         print(element)
         title.append(element)
     driver.quit()
+    #works up till here...
+
+    #now add every element within title, to the database. 
     return title
     
