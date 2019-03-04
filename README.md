@@ -51,4 +51,15 @@ Finished FileParser.py, tested readFile() works successfully!
 Created Test1_CSV.csv file, filled it with entries. Worked on readFiles(). 
 Tested whole project. Works!!! 
 
+(3/3/18)
+Made Webscraper.py file. 
+The idea of that, is to add a "continously add function", essentially if the user doesn't want to make a .txt file or manually enter
+all the data by themselves, then the user would enter what type of videos they want to search, the program would search google, and pull 
+up all the urls, then they would webscrape those urls via the webscrape() function and would get the titles, of those videos then adds
+all that data into the datbase. 
+Webscraper() is successfully able to search the web for urls and get hte titles. 
+Need to work on adding them to the datbase. 
+Also, a weird bug thats come to passs is that the program can be run multiple times but there's a 2/3 chance (based on me running it 9 
+times, and it working 3 of those times) that it won't work and raise a timeout error. 
+
 Bugs: At times, the program will open urls in bing and not in chrome. 
