@@ -17,6 +17,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+#Works fine!
+#Bug: This only works sometimes. Literally its been tested, and sometimes a
+#timeout exception will occur and other times it will run perfectly with
+#literally zero change. 
 def webscraper(phrase, n=10):
     phrase.lower()
     title=list()
@@ -24,6 +28,7 @@ def webscraper(phrase, n=10):
         phrase+=" youtube"
     j=search(phrase,tld='com',num=n, stop=1,pause=2)
     a=[element for element in j]
+    print(a)
     #now for each url in a, find the title
     driver=webdriver.Chrome(executable_path=
                             r"C:\Users\gupta\Downloads\chromedriver.exe")
@@ -39,4 +44,6 @@ def webscraper(phrase, n=10):
 
     #now add every element within title, to the database. 
     return title
+
+#function to add a title and url to a database 
     
