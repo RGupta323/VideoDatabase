@@ -25,12 +25,14 @@ def webscraper(phrase, n=10):
     j=search(phrase,tld='com',num=n, stop=1,pause=2)
     a=[element for element in j]
     #now for each url in a, find the title
-    driver=webdriver.Chrome()
+    driver=webdriver.Chrome(executable_path=
+                            r"C:\Users\gupta\Downloads\chromedriver.exe")
     for url in a:
         driver.get(url)
         wait=WebDriverWait(driver,10)
         element=wait.until(EC.presence_of_element_located((By.CSS_SELECTOR,
                                     "h1.title yt-formatted-string"))).text
+        print(element)
         title.append(element)
     driver.quit()
     return title
