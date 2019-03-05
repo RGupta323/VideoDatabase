@@ -21,13 +21,14 @@ from selenium.webdriver.support import expected_conditions as EC
 #Bug: This only works sometimes. Literally its been tested, and sometimes a
 #timeout exception will occur and other times it will run perfectly with
 #literally zero change. 
-def webscraper(phrase, n=10):
+def webscraper(phrase, n=5):
     phrase.lower()
     title=list()
     if("youtube" not in phrase):
         phrase+=" youtube"
     j=search(phrase,tld='com',num=n, stop=1,pause=2)
     a=[element for element in j]
+    #a=list(j)
     print(a)
     #now for each url in a, find the title
     driver=webdriver.Chrome(executable_path=
