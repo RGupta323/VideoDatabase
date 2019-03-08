@@ -53,7 +53,8 @@ def webscraper(phrase, n=5):
 def add(title, url):
     conn=sqlite3.connect("VideoDatabase2.db")
     #insert data into videos
-    conn.execute('''INSERT INTO VIDEOS (TITLE,URL) \ VALUES (?,?);'''
-                 ,(title,url))
+    print("title: {} \n url: {}".format(title,url))
+    conn.execute('''INSERT INTO VIDEOS (TITLE,URL,TAGS) VALUES (?,?,?);''',
+                 (title,url,"",))
     conn.commit()
     conn.close()

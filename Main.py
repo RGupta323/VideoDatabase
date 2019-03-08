@@ -16,7 +16,8 @@
 ###########################################################################
 import sqlite3
 from Search import *
-from Table import * 
+from Table import *
+from WebScraper import *
 #connecting to database
 conn = sqlite3.connect("VideoDatabase2.db")
 #print("Connected to database successfully!") #connected successfully
@@ -63,11 +64,13 @@ input: """)
     if(int(option)==2):
         phrase=input('''Please enter what you would like to google search,
 or a phrase you would like for the program to search. An example is: "linear
-algebra basis youtube".''')
+algebra basis youtube".
+phrase: ''')
         n=input('''Please enter the number of urls or videos you would like to
                 be put inside the database, if you don't wish to put a number
-                the default will be 10. If you don't want to provide a number
-                put -1 instead.''')
+                the default will be 5. If you don't want to provide a number
+                put -1 instead.
+                n: ''')
         n=int(n)
         if(n==-1):
             webscraper(phrase)

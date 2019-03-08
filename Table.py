@@ -34,7 +34,7 @@ URL TEXT NOT NULL);'''.format(tags,))
         except:
             print("Table already created")
         #insert data of dictionary 
-        product="INSERT INTO " + tags+" (TITLE, URL) \ VALUES (?,?)"
+        #product="INSERT INTO " + tags+" (TITLE, URL) \ VALUES (?,?)"
         print(product)
         print(d[tags])
         #conn.execute(product, (d[tags][0],d[tags][1]))
