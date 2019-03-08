@@ -17,6 +17,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import sqlite3
 #Works fine!
 #Bug: This only works sometimes. Literally its been tested, and sometimes a
 #timeout exception will occur and other times it will run perfectly with
@@ -42,9 +43,17 @@ def webscraper(phrase, n=5):
         title.append(element)
     driver.quit()
     #works up till here...
-
-    #now add every element within title, to the database. 
+    print(title)
+    #adding titles and urls into the database 
+    for n in range(len(title)):
+        add(title[n],a[n])
     return title
 
 #function to add a title and url to a database 
-    
+def add(title, url):
+    conn=sqlite3.connect("VideoDatabase2.db")
+    #insert data into videos
+    conn.execute('''INSERT INTO VIDEOS (TITLE,URL) \ VALUES (?,?);'''
+                 ,(title,url))
+    conn.commit()
+    conn.close()
