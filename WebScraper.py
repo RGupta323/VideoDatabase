@@ -17,17 +17,19 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import sqlite3
 #Works fine!
 #Bug: This only works sometimes. Literally its been tested, and sometimes a
 #timeout exception will occur and other times it will run perfectly with
 #literally zero change. 
-def webscraper(phrase, n=10):
+def webscraper(phrase, n=5):
     phrase.lower()
     title=list()
     if("youtube" not in phrase):
         phrase+=" youtube"
     j=search(phrase,tld='com',num=n, stop=1,pause=2)
     a=[element for element in j]
+    #a=list(j)
     print(a)
     #now for each url in a, find the title
     driver=webdriver.Chrome(executable_path=
@@ -41,9 +43,18 @@ def webscraper(phrase, n=10):
         title.append(element)
     driver.quit()
     #works up till here...
-
-    #now add every element within title, to the database. 
+    print(title)
+    #adding titles and urls into the database 
+    for n in range(len(title)):
+        add(title[n],a[n])
     return title
 
 #function to add a title and url to a database 
-    
+def add(title, url):
+    conn=sqlite3.connect("VideoDatabase2.db")
+    #insert data into videos
+    print("title: {} \n url: {}".format(title,url))
+    conn.execute('''INSERT INTO VIDEOS (TITLE,URL,TAGS) VALUES (?,?,?);''',
+                 (title,url,"",))
+    conn.commit()
+    conn.close()

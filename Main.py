@@ -16,7 +16,8 @@
 ###########################################################################
 import sqlite3
 from Search import *
-from Table import * 
+from Table import *
+from WebScraper import *
 #connecting to database
 conn = sqlite3.connect("VideoDatabase2.db")
 #print("Connected to database successfully!") #connected successfully
@@ -46,7 +47,10 @@ if(int(option)==0):
 else:
     option=input("""Please enter 0 if you would like to manually
 input the title, url and tags of the video or enter 1 if you have a text
-or csv file that already has those things.
+ file that already has those things. Or enter 2, if you would like to auto add
+ essentially what that is, is that this program will search teh type of videos
+ you want, like you would normally serach on google and youtube, it collects
+ those urls for you, and puts them into the database itself. 
 input: """)
     #entering manually
     if(int(option)==0):
@@ -54,9 +58,24 @@ input: """)
         table()
     #entering via text file
     if(int(option)==1):
-        readFiles() #this function works for txt files!!!
+        readFiles() 
         table()
-            
+    #auto add function
+    if(int(option)==2):
+        phrase=input('''Please enter what you would like to google search,
+or a phrase you would like for the program to search. An example is: "linear
+algebra basis youtube".
+phrase: ''')
+        n=input('''Please enter the number of urls or videos you would like to
+                be put inside the database, if you don't wish to put a number
+                the default will be 5. If you don't want to provide a number
+                put -1 instead.
+                n: ''')
+        n=int(n)
+        if(n==-1):
+            webscraper(phrase)
+        else:
+            webscraper(phrase,n)
 
 
 
